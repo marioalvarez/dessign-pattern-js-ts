@@ -84,12 +84,34 @@ console.log(drink.info());
 
 // funcional
 function Drink2(name, price) {
-    this.name = name;
-    this.price = price;
-    this.info = function() {
-        return `La bebida ${this.name} cuesta ${this.price}`;
-    }
+  this.name = name;
+  this.price = price;
+  this.info = function () {
+    return `La bebida ${this.name} cuesta ${this.price}`;
+  };
 }
 
 const drink2 = new Drink2("Coca Cola", 10);
 console.log(drink2.info());
+
+// herencia
+class Beer extends Drink {
+  constructor(name, price, type, alcohol) {
+    super(name, price);
+    this.type = type;
+    this.alcohol = alcohol;
+  }
+  // getType() {
+  //   return this.type;
+  // }
+  info() {
+    return (
+      super.info() +
+      " " +
+      `y es de tipo ${this.type} y tiene ${this.alcohol} grados de alcohol`
+    );
+  }
+}
+
+const beer = new Beer("Cristal", 10, "rubia", 8.5);
+console.log(beer.info());
